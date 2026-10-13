@@ -27,7 +27,7 @@ Also included: light, dark, or system theme (your choice is saved), a splash scr
 
 - Flutter SDK with **Dart `^3.13.2`**
 - Chrome, for web, or a simulator or device
-- The **backend running on `http://localhost:5000`**. See the [backend README](../backend/README.md#getting-started)
+- The **backend running on `http://localhost:5000`**. See the [backend README](../backend/README.md#getting-started). To skip it and use the deployed API instead, see [Pointing at a different backend](#pointing-at-a-different-backend)
 
 ### Run
 
@@ -47,25 +47,39 @@ Or in VS Code, pick one of the configurations in [`.vscode/launch.json`](.vscode
 
 ### Pointing at a different backend
 
-The API address is a constant in [`lib/core/network/api_client.dart`](lib/core/network/api_client.dart):
+The API address is a build-time value in [`lib/core/network/api_client.dart`](lib/core/network/api_client.dart):
 
 ```dart
-static const String baseUrl = 'http://localhost:5000/api';
+static const String baseUrl = String.fromEnvironment('API_BASE_URL', defaultValue: 'http://localhost:5000/api');
 ```
 
-| Where you run the app | `baseUrl` |
+Running without a flag uses the localhost default, so the command above needs no extra setup. To point somewhere else, pass `--dart-define` rather than editing the file:
+
+| Where you run the app | Flag |
 |---|---|
-| Web, iOS simulator, desktop | `http://localhost:5000/api` |
-| Android emulator | `http://10.0.2.2:5000/api` |
-| Physical device | `http://<your-LAN-IP>:5000/api` |
+| Web, iOS simulator, desktop | *(none — the default already fits)* |
+| Android emulator | `--dart-define=API_BASE_URL=http://10.0.2.2:5000/api` |
+| Physical device | `--dart-define=API_BASE_URL=http://<your-LAN-IP>:5000/api` |
+| Against production | `--dart-define=API_BASE_URL=https://shortly-dgxi.onrender.com/api` |
+
+The same flag drives `ApiClient.publicHost`, the bare `host:port` the UI shows when previewing what a short link will look like. Both come from one value, so there is nothing else to change.
 
 ### Other commands
 
 ```bash
 flutter test            # unit + widget tests (test/presentation/)
 flutter analyze         # lints (flutter_lints, page width 120)
-flutter build web       # release build → build/web/
+flutter build web       # release build → build/web/ (localhost default)
+
+# release build aimed at the deployed backend, as CI does it
+flutter build web --release \
+  --base-href /shortly/ \
+  --dart-define=API_BASE_URL=https://shortly-dgxi.onrender.com/api
 ```
+
+### Deployment
+
+Pushing to `main` builds this app and publishes it to [GitHub Pages](https://moyeenhaider3.github.io/shortly/), with `API_BASE_URL` taken from the `BACKEND_URL` repository variable. See [Deployment in the root README](../README.md#deployment) for the full pipeline and its one-time setup.
 
 ---
 

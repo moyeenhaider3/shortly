@@ -10,11 +10,20 @@ import userRouter from './routes/user.routes';
 
 const app: Application = express();
 
+// Render (and most PaaS) terminate HTTPS at a proxy and forward to us over
+// HTTP. Trusting the first hop lets req.protocol reflect what the browser
+// actually used, so generated short links come back as https:// in production.
+app.set('trust proxy', 1);
+
 // 2. Configure CORS Middleware (Must be before any routes!)
 app.use(
   cors({
-    origin: "*", // Reflects the request origin (allows any localhost port in development)
-    credentials: true, // Crucial: Allows Flutter to send cookies and authorization headers
+    // Any origin: any localhost port in development, GitHub Pages in production.
+    // Note: the spec forbids pairing "*" with credentialed requests, so browsers
+    // drop the auth cookie. The Flutter client uses the Bearer header instead.
+    // Swap in an explicit origin list if the cookie ever needs to work in-browser.
+    origin: "*",
+    credentials: true, // Allows Flutter to send cookies and authorization headers
     methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
   })

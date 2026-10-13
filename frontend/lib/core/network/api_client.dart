@@ -6,6 +6,14 @@ class ApiClient {
   static const String baseUrl = String.fromEnvironment('API_BASE_URL', defaultValue: 'http://localhost:5000/api');
   static const String tokenKey = 'jwt_token';
 
+  /// Host (and port, if any) of the backend, derived from [baseUrl] — e.g.
+  /// "localhost:5000" in dev or "shortly-dgxi.onrender.com" in production.
+  /// The domain short links live on.
+  static String get publicHost {
+    final uri = Uri.parse(baseUrl);
+    return uri.hasPort ? '${uri.host}:${uri.port}' : uri.host;
+  }
+
   final SharedPreferences prefs;
   late final Dio dio;
 

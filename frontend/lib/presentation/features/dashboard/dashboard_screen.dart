@@ -34,12 +34,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return 'Good evening';
   }
 
-  /// "localhost:5000/" — taken from an existing short link when available,
-  /// so it matches exactly what the backend generates.
+  /// Taken from an existing short link when available, so it matches exactly
+  /// what the backend generates; otherwise falls back to the backend's own host.
   String _domainPrefix(List<UrlModel> urls) {
     final source = urls.isNotEmpty ? Uri.tryParse(urls.first.shortUrl) : null;
-    final uri = (source != null && source.host.isNotEmpty) ? source : Uri.parse(ApiClient.baseUrl);
-    return '${uri.host}${uri.hasPort ? ':${uri.port}' : ''}/';
+    if (source != null && source.host.isNotEmpty) {
+      return '${source.host}${source.hasPort ? ':${source.port}' : ''}/';
+    }
+    return '${ApiClient.publicHost}/';
   }
 
   @override

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../components/brand.dart';
+import '../../../../core/network/api_client.dart';
 import '../../../layout/breakpoints.dart';
 import '../../../theme/app_colors.dart';
 import '../../../theme/app_tokens.dart';
@@ -181,7 +182,7 @@ class _MockLinkCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('localhost:5000/launch', style: t.mono.copyWith(color: _ink.textPrimary)),
+                  Text('${ApiClient.publicHost}/launch', style: t.mono.copyWith(color: _ink.textPrimary)),
                   Text('github.com/acme/product/releases/v2', style: t.small.copyWith(color: _ink.textMuted)),
                 ],
               ),

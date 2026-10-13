@@ -1,8 +1,12 @@
 # Project instructions
 
 ## Layout
-- `frontend/` — Flutter frontend; calls the backend at `http://localhost:5000/api`.
+- `frontend/` — Flutter frontend; calls the backend at `http://localhost:5000/api` by
+  default. The address is build-time: `--dart-define=API_BASE_URL=...` overrides it, and
+  `ApiClient.publicHost` derives the display host from it. Never hardcode a host in the UI.
 - `backend/` — Node.js/TypeScript (Express) backend on port 5000.
+- `.github/workflows/deploy.yml` — a push to `main` deploys the backend to Render, then the
+  frontend to GitHub Pages. See [Deployment](README.md#deployment).
 
 ## Debugging the running app
 When a bug involves the running app, use the flutter-peek MCP tools before you

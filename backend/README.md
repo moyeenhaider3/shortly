@@ -64,7 +64,8 @@ curl http://localhost:5000/health
 |---|---|
 | `npm run dev` | Runs `src/server.ts` with `tsx` and restarts on file changes |
 | `npm run build` | Compiles TypeScript to `dist/` |
-| `npm start` | Runs the compiled server: `node dist/server.js` (run `build` first) |
+| `npm start` | Runs the compiled server: `node dist/server.js` (run `build` first). This is what runs in production |
+| `npm run start:prod` | Same, but loads `.env.prod` instead of the ambient environment. For testing a production-like config locally |
 
 There is no test script yet.
 
@@ -74,13 +75,24 @@ Read in [`src/config/env.ts`](src/config/env.ts). Copy them from [`.env.example`
 
 | Variable | Default | Purpose |
 |---|---|---|
-| `PORT` | `5000` | HTTP port. The Flutter client expects `5000` |
+| `PORT` | `5000` | HTTP port. The Flutter client expects `5000` locally. On Render, leave it unset — the platform assigns it |
 | `NODE_ENV` | `development` | `production` makes the auth cookie `secure` (HTTPS only). `development` logs every handled error |
 | `MONGODB_URI` | `mongodb://127.0.0.1:27017/url_shortener_db` | Mongo connection string |
 | `JWT_SECRET` | `fallback_secret_for_dev_only` | Secret used to sign tokens. **Always set this.** The fallback is not safe outside local development |
 | `JWT_EXPIRES_IN` | `7d` | Token lifetime, in any format [`jsonwebtoken`](https://github.com/auth0/node-jsonwebtoken#usage) accepts |
 
-> The server starts listening **before** MongoDB connects. If the database is down, `/health` still responds, a connection error is logged, and database-backed routes fail until MongoDB is available.
+> The server starts listening **before** MongoDB connects. If the database is down, `/health` still responds, a connection error is logged, and database-backed routes fail until MongoDB is available. This also means a green `/health` does **not** prove the database is reachable.
+
+### Deployment
+
+Deployed to Render at [`https://shortly-dgxi.onrender.com`](https://shortly-dgxi.onrender.com), triggered by a push to `main`. [Deployment in the root README](../README.md#deployment) covers the service settings and the required GitHub secrets.
+
+Two things matter when running behind Render's proxy:
+
+- **`app.set('trust proxy', 1)`** in [`src/app.ts`](src/app.ts). Render terminates HTTPS at its proxy and forwards over plain HTTP, so without it `req.protocol` reads `http` and every generated `shortUrl` comes back as `http://`. The setting makes Express honour `X-Forwarded-Proto`. It is inert locally.
+- **The build command needs `npm ci --include=dev`.** With `NODE_ENV=production` set, npm skips devDependencies, and `typescript` is one, so a plain `npm ci` fails the build with `tsc: not found`.
+
+> **Free tier:** the service spins down after roughly 15 minutes of inactivity, and the next request takes 30–60 seconds while it wakes. Deploys are unaffected.
 
 ---
 
@@ -127,7 +139,7 @@ Middleware runs in the order set in [`app.ts`](src/app.ts): `cors` → `json`/`u
 
 ## API reference
 
-Base URL: `http://localhost:5000`
+Base URL: `http://localhost:5000` locally, `https://shortly-dgxi.onrender.com` in production. The examples below use the local one.
 
 **Authentication:** protected routes accept either
 
