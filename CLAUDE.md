@@ -6,7 +6,7 @@
   `ApiClient.publicHost` derives the display host from it. Never hardcode a host in the UI.
 - `backend/` — Node.js/TypeScript (Express) backend on port 5000.
 - `.github/workflows/deploy.yml` — a push to `main` deploys the backend to Render, then the
-  frontend to GitHub Pages. See [Deployment](README.md#deployment).
+  frontend to GitHub Pages. Runbook: [DEPLOYMENT.md](DEPLOYMENT.md).
 
 ## Debugging the running app
 When a bug involves the running app, use the flutter-peek MCP tools before you

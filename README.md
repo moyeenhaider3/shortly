@@ -198,39 +198,15 @@ flowchart LR
 
 Both jobs read the backend address from the `BACKEND_URL` repository **variable**, so the URL lives in exactly one place.
 
-### One-time setup
+**→ [`DEPLOYMENT.md`](DEPLOYMENT.md) is the full runbook**: first-time setup from scratch, the credentials reference, rollback, and a troubleshooting section covering every failure this project has hit.
 
-**1. Render** — create a Web Service from this repo:
-
-| Setting | Value |
-|---|---|
-| Root Directory | `backend` |
-| Build Command | `npm ci --include=dev && npm run build` |
-| Start Command | `npm start` |
-| Health Check Path | `/health` |
-| Auto-Deploy | **Off** (the workflow triggers deploys through the hook) |
-| Environment | `MONGODB_URI`, `JWT_SECRET`, `JWT_EXPIRES_IN`, `NODE_ENV=production`. Do **not** set `PORT`; Render provides it |
-
-`--include=dev` matters: `NODE_ENV=production` makes npm skip devDependencies, and `typescript` lives there, so without the flag the build fails with `tsc: not found`.
-
-**2. GitHub → Settings → Environments → `production`** — restrict deployment branches to `main`, then add three secrets:
-
-| Secret | Where to find it |
-|---|---|
-| `RENDER_DEPLOY_HOOK_URL` | Render → service → Settings → Deploy Hook |
-| `RENDER_API_KEY` | Render → Account Settings → API Keys |
-| `RENDER_SERVICE_ID` | The `srv-…` id shown on the service page |
-
-**3. GitHub → Settings → Secrets and variables → Actions → _Variables_ tab** — add a repository variable `BACKEND_URL`, for example `https://shortly-dgxi.onrender.com`, with no `/api` and no trailing slash. It is a variable rather than a secret because it is compiled into the public JavaScript anyway.
-
-**4. GitHub → Settings → Pages** — set **Source** to **GitHub Actions**. No token is needed; the workflow authenticates with OIDC.
-
-### Notes
+A few properties worth knowing without opening it:
 
 - **Nothing secret reaches the client.** The only value injected into the Flutter build is the public backend URL.
 - The workflow runs on `push` to `main` and on manual dispatch, never on `pull_request`, so a fork cannot reach the secrets.
 - The repository token is read-only by default; only the Pages job is granted `pages: write` and `id-token: write`.
 - The site is served from a subpath, so the build passes `--base-href /shortly/` and copies `index.html` to `404.html` so that refreshing a deep link still loads the app.
+- Deploys never overlap: a second push queues rather than cancelling one in flight.
 
 ---
 
@@ -255,3 +231,4 @@ For debugging the running Flutter app (console and HTTP logs), see [Debugging in
 
 - **[Backend README](backend/README.md):** environment variables, full API reference with request and response examples, data model, error codes, and project structure.
 - **[Frontend README](frontend/README.md):** screens, state management, routing, folder structure, theming, tests, and debugging.
+- **[DEPLOYMENT.md](DEPLOYMENT.md):** the deployment runbook — setting up Atlas, Render, GitHub secrets and Pages from scratch, rotating credentials, rolling back, and troubleshooting failed deploys.

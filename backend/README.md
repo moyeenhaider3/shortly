@@ -85,7 +85,7 @@ Read in [`src/config/env.ts`](src/config/env.ts). Copy them from [`.env.example`
 
 ### Deployment
 
-Deployed to Render at [`https://shortly-dgxi.onrender.com`](https://shortly-dgxi.onrender.com), triggered by a push to `main`. [Deployment in the root README](../README.md#deployment) covers the service settings and the required GitHub secrets.
+Deployed to Render at [`https://shortly-dgxi.onrender.com`](https://shortly-dgxi.onrender.com), triggered by a push to `main`. **[`DEPLOYMENT.md`](../DEPLOYMENT.md)** is the full runbook — service settings, Atlas setup, GitHub secrets, rollback and troubleshooting.
 
 Two things matter when running behind Render's proxy:
 

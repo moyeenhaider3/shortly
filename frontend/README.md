@@ -79,7 +79,7 @@ flutter build web --release \
 
 ### Deployment
 
-Pushing to `main` builds this app and publishes it to [GitHub Pages](https://moyeenhaider3.github.io/shortly/), with `API_BASE_URL` taken from the `BACKEND_URL` repository variable. See [Deployment in the root README](../README.md#deployment) for the full pipeline and its one-time setup.
+Pushing to `main` builds this app and publishes it to [GitHub Pages](https://moyeenhaider3.github.io/shortly/), with `API_BASE_URL` taken from the `BACKEND_URL` repository variable. **[`DEPLOYMENT.md`](../DEPLOYMENT.md)** is the full runbook — pipeline, one-time setup and troubleshooting.
 
 ---
 
