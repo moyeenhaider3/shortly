@@ -13,7 +13,7 @@ const app: Application = express();
 // 2. Configure CORS Middleware (Must be before any routes!)
 app.use(
   cors({
-    origin: true, // Reflects the request origin (allows any localhost port in development)
+    origin: "*", // Reflects the request origin (allows any localhost port in development)
     credentials: true, // Crucial: Allows Flutter to send cookies and authorization headers
     methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],

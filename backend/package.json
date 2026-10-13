@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
+    "start:prod": "DOTENV_CONFIG_PATH=.env.prod node -r dotenv/config dist/server.js",
     "start": "node dist/server.js"
   },
   "keywords": [],
@@ -28,7 +29,6 @@
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^26.6.4",
-    "@typescript/typescript-darwin-arm64": "^7.0.2",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   }

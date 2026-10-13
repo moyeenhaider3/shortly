@@ -2,7 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiClient {
-  static const String baseUrl = 'http://localhost:5000/api';
+  // Overridden at build time: flutter build web --dart-define=API_BASE_URL=https://...
+  static const String baseUrl = String.fromEnvironment('API_BASE_URL', defaultValue: 'http://localhost:5000/api');
   static const String tokenKey = 'jwt_token';
 
   final SharedPreferences prefs;
