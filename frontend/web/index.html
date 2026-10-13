@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Shortly — shorten links, choose custom aliases and track clicks.">
+  <meta name="theme-color" content="#FAFAFA" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#09090B" media="(prefers-color-scheme: dark)">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Shortly">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>Shortly</title>
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Loading splash shown while the Flutter engine downloads; removed on first frame. -->
+  <style>
+    html, body { margin: 0; height: 100%; background: #FAFAFA; }
+    @media (prefers-color-scheme: dark) { html, body { background: #09090B; } }
+    #splash {
+      position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+      transition: opacity 200ms ease-out;
+    }
+    #splash .logo {
+      width: 40px; height: 40px; border-radius: 10px; background: #4F46E5;
+      animation: pulse 1.2s ease-in-out infinite;
+    }
+    @media (prefers-color-scheme: dark) { #splash .logo { background: #818CF8; } }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .55; transform: scale(.92); } }
+    @media (prefers-reduced-motion: reduce) { #splash .logo { animation: none; } }
+  </style>
+</head>
+<body>
+  <div id="splash" aria-label="Loading Shortly" role="progressbar"><div class="logo"></div></div>
+  <script>
+    window.addEventListener('flutter-first-frame', function () {
+      var el = document.getElementById('splash');
+      if (!el) return;
+      el.style.opacity = '0';
+      setTimeout(function () { el.remove(); }, 220);
+    });
+  </script>
+  <!--
+    You can customize the "flutter_bootstrap.js" script.
+    This is useful to provide a custom configuration to the Flutter loader
+    or to give the user feedback during the initialization process.
+
+    For more details:
+    * https://docs.flutter.dev/platform-integration/web/initialization
+  -->
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
