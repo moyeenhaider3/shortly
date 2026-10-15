@@ -41,7 +41,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 4 plans
 
 Plans:
-- [ ] 01-01: Scaffold with Nest CLI, tour of `main.ts` / `AppModule` / controller / service, port 5001, scripts, ESLint + Prettier
+- [x] 01-01: Scaffold with Nest CLI, tour of `main.ts` / `AppModule` / controller / service, port 5001, scripts, ESLint + Prettier
 - [ ] 01-02: Docker Compose Postgres (5433, named volume, healthcheck), `.env` / `.env.example`, `.gitignore`
 - [ ] 01-03: `ConfigModule` with Joi schema (fail fast, no fallbacks), typed config access via `ConfigService`
 - [ ] 01-04: `HealthModule` with `GET /health` matching Express
@@ -202,7 +202,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Config | 0/4 | Not started | - |
+| 1. Foundation & Config | 1/4 | In progress | - |
 | 2. Request Lifecycle & Contract Baseline | 0/5 | Not started | - |
 | 3. Data Layer with Prisma | 0/4 | Not started | - |
 | 4. Authentication & Authorization | 0/4 | Not started | - |

@@ -11,17 +11,17 @@ See: .planning/PROJECT.md (updated 2026-10-15)
 ## Current Position
 
 Phase: 1 of 9 (Foundation & Config)
-Plan: 0 of 4 in current phase
-Step: — (not started)
-Status: Planned — ready to start 01-01
-Last activity: 2026-10-15 — Phase 1 planned (4 guided plans in .planning/phases/01-foundation-config/)
+Plan: 1 of 4 in current phase
+Step: 01-01 verified; next 01-02 (Docker Postgres) + 01-03 (ConfigModule) taken together for speed
+Status: In progress
+Last activity: 2026-10-15 — 01-01 done: Nest scaffold (CJS, npm, oxlint), port 5001, hot reload and lint verified
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [█░░░░░░░░░] 3%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
+- Total plans completed: 1
 - Average duration: -
 - Total execution time: -
 
@@ -49,7 +49,7 @@ Recent decisions affecting current work:
 
 <!-- Append as each concept is introduced and verified, e.g. "Phase 1 / 01-01: Modules, providers, DI". Used to avoid re-explaining and to build on prior knowledge. -->
 
-None yet.
+- 01-01: Module / controller / provider; constructor dependency injection; NestFactory bootstrap; hot reload (`start:dev`); CJS chosen over ESM; scaffold uses oxlint (not ESLint)
 
 ### Pending Todos
 
@@ -57,7 +57,9 @@ None yet.
 
 ### Blockers/Concerns
 
-- Node: local v26, Express pins 24 in `backend/.nvmrc`. Decide `backend-nest/.nvmrc` in 01-01.
+- Node: `backend-nest/.nvmrc` = 24 (matches Express). Developer's machine runs v26 and has no version manager; fnm was recommended, install status unknown.
+- `*.tsbuildinfo` still missing from `backend-nest/.gitignore` (build cache shows as untracked).
+- backend-nest not yet committed (developer staging it).
 
 ## Deferred Items
 
@@ -68,5 +70,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-10-15
-Stopped at: Phase 1 planned; next is guiding 01-01 (Nest CLI scaffold, port 5001, lint)
+Stopped at: 01-01 complete; guiding 01-02 + 01-03 together
 Resume file: None
