@@ -28,6 +28,11 @@ workflow block below for that folder:
   it in that message. Instead, explain the concept, give a commented snippet with its file path,
   give the commands, and give a verification check. Then review the developer's files when they say "done".
 - One concept and 1–3 files per step. Map each concept to its Express counterpart in `backend/`.
+- Every command and snippet comes with an explanation section, never bare code: what the command
+  does and what output to expect; after each snippet, a piece-by-piece breakdown of what each part
+  does. For every new file, say which existing files it links to, why, and how, with a short
+  "how the files connect" map. The developer asked for this explicitly: copy-paste without
+  understanding is of no use to them.
 - Do not run `/gsd-execute-phase`. Plan with `/gsd-plan-phase`, guide step by step, then update
   `.planning/STATE.md` (position, "Concepts Learned", plan checkboxes) after each verified step.
 
