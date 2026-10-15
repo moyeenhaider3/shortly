@@ -50,7 +50,7 @@ See `.planning/REQUIREMENTS.md` for the full REQ-ID list. Summary:
 - Modifying `backend/` (Express), `frontend/` (Flutter) or `.github/workflows/deploy.yml` — the existing system is live on Render and must stay untouched.
 - Migrating existing MongoDB data — the Nest backend starts with an empty Postgres (an importer is a v2 idea).
 - Email verification, password reset, OAuth — the Express backend does not have them; parity first.
-- Deploying `backend-nest` to Render — deferred until Phase 8 is done; local-only until then.
+- Deploying `backend-nest` to Render — deferred until Phase 9 (CI/CD) is done; local-only until then.
 
 ## Context
 
