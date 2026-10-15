@@ -13,8 +13,8 @@ See: .planning/PROJECT.md (updated 2026-10-15)
 Phase: 1 of 9 (Foundation & Config)
 Plan: 0 of 4 in current phase
 Step: — (not started)
-Status: Ready to plan
-Last activity: 2026-10-15 — Project initialized (PROJECT, REQUIREMENTS, ROADMAP)
+Status: Planned — ready to start 01-01
+Last activity: 2026-10-15 — Phase 1 planned (4 guided plans in .planning/phases/01-foundation-config/)
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -68,5 +68,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-10-15
-Stopped at: Project initialized; next is planning Phase 1 (plan 01-01: Nest CLI scaffold)
+Stopped at: Phase 1 planned; next is guiding 01-01 (Nest CLI scaffold, port 5001, lint)
 Resume file: None
