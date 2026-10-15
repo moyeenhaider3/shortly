@@ -9,11 +9,11 @@
 
 ### Foundation (roadmap Day 1, Day 9)
 
-- [ ] **FOUND-01**: Developer can start the Nest app from `backend-nest/` with `npm run start:dev` and it listens on port 5001, independent of `backend/`
-- [ ] **FOUND-02**: App refuses to boot, with a clear message, when `DATABASE_URL` is missing or `JWT_SECRET` is missing or shorter than 32 characters (Joi-validated `ConfigModule`, no fallbacks)
-- [ ] **FOUND-03**: Developer can start PostgreSQL with `docker compose up -d` from `backend-nest/` (host port 5433, named volume, healthcheck) without touching MongoDB
-- [ ] **FOUND-04**: `GET /health` returns 200 `{success:true,message,timestamp}` matching Express
-- [ ] **FOUND-05**: `npm run lint` and `npm run format` enforce ESLint + Prettier on `backend-nest/src`
+- [x] **FOUND-01**: Developer can start the Nest app from `backend-nest/` with `npm run start:dev` and it listens on port 5001, independent of `backend/`
+- [x] **FOUND-02**: App refuses to boot, with a clear message, when `DATABASE_URL` is missing or `JWT_SECRET` is missing or shorter than 32 characters (Joi-validated `ConfigModule`, no fallbacks)
+- [x] **FOUND-03**: Developer can start PostgreSQL with `docker compose up -d` from `backend-nest/` (host port 5433, named volume, healthcheck) without touching MongoDB
+- [x] **FOUND-04**: `GET /health` returns 200 `{success:true,message,timestamp}` matching Express
+- [x] **FOUND-05**: `npm run lint` and `npm run format` enforce ESLint + Prettier on `backend-nest/src`
 
 ### Request Lifecycle (roadmap Day 2)
 
@@ -133,11 +133,11 @@ Deferred. Tracked but not in the current roadmap.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUND-01 | Phase 1 | Pending |
-| FOUND-02 | Phase 1 | Pending |
-| FOUND-03 | Phase 1 | Pending |
-| FOUND-04 | Phase 1 | Pending |
-| FOUND-05 | Phase 1 | Pending |
+| FOUND-01 | Phase 1 | Complete |
+| FOUND-02 | Phase 1 | Complete |
+| FOUND-03 | Phase 1 | Complete |
+| FOUND-04 | Phase 1 | Complete |
+| FOUND-05 | Phase 1 | Complete |
 | LIFE-01 | Phase 2 | Pending |
 | LIFE-02 | Phase 2 | Pending |
 | LIFE-03 | Phase 2 | Pending |

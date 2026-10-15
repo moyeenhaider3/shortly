@@ -14,7 +14,7 @@ Every plan is executed in **mentorship mode** (see PROJECT.md): Claude explains 
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation & Config** - Nest app on 5001, validated config, Postgres in Docker, `/health` (Day 1, Day 9)
+- [x] **Phase 1: Foundation & Config** - Nest app on 5001, validated config, Postgres in Docker, `/health` (Day 1, Day 9)
 - [ ] **Phase 2: Request Lifecycle & Contract Baseline** - Exception filter, envelope, validation pipe, logger; contract suite green against Express (Day 2, Day 8)
 - [ ] **Phase 3: Data Layer with Prisma** - Schema, migrations, seed, PrismaService, transactions (Day 3)
 - [ ] **Phase 4: Authentication & Authorization** - Signup/login/logout/me, JWT strategy, cookie + Bearer, roles guard (Day 5)
@@ -42,9 +42,9 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 Plans:
 - [x] 01-01: Scaffold with Nest CLI, tour of `main.ts` / `AppModule` / controller / service, port 5001, scripts, ESLint + Prettier
-- [ ] 01-02: Docker Compose Postgres (5433, named volume, healthcheck), `.env` / `.env.example`, `.gitignore`
-- [ ] 01-03: `ConfigModule` with Joi schema (fail fast, no fallbacks), typed config access via `ConfigService`
-- [ ] 01-04: `HealthModule` with `GET /health` matching Express
+- [x] 01-02: Docker Compose Postgres (5433, named volume, healthcheck), `.env` / `.env.example`, `.gitignore`
+- [x] 01-03: `ConfigModule` with Joi schema (fail fast, no fallbacks), typed config access via `ConfigService`
+- [x] 01-04: `HealthModule` with `GET /health` matching Express
 
 ### Phase 2: Request Lifecycle & Contract Baseline
 **Goal**: Every response and error that leaves `backend-nest` already has the Express envelope, input validation is declarative, and a framework-agnostic contract suite proves the Express baseline.
@@ -202,7 +202,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Config | 1/4 | In progress | - |
+| 1. Foundation & Config | 4/4 | Complete | 2026-10-15 |
 | 2. Request Lifecycle & Contract Baseline | 0/5 | Not started | - |
 | 3. Data Layer with Prisma | 0/4 | Not started | - |
 | 4. Authentication & Authorization | 0/4 | Not started | - |
