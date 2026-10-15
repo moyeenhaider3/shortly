@@ -111,6 +111,7 @@ Error codes: `UNAUTHORIZED`, `INVALID_TOKEN`, `USER_DELETED`, `FORBIDDEN`, `VALI
 |----------|-----------|---------|
 | Separate `backend-nest/` folder, Express untouched | Two codebases side by side; zero risk to the live deploy | — Pending |
 | PostgreSQL + Prisma (not Prisma-on-Mongo) | Matches roadmap Day 3: relational modelling, `Visit` table, transactions, migrations | — Pending |
+| Hybrid dev setup: DB (and later Redis) in Docker Compose; Nest app + Prisma CLI run natively on the host via `DATABASE_URL=postgresql://…@localhost:5433/…` | Fast hot-reload and native debugging, while the DB stays isolated and disposable; the app is containerised only for production in Phase 7 | — Pending |
 | UUID string ids | Flutter treats ids as opaque strings; String column leaves room for a legacy-id import later | — Pending |
 | Admins see **all** active links on `GET /api/urls` in Nest | Fixes the Express quirk (controller calls `getUserUrls` instead of the admin-aware `getUrls`); a deliberate, documented divergence the contract tests account for | — Pending |
 | bcrypt first, Argon2 later with rehash-on-login | Parity first; upgrade hashes transparently in Phase 6 | — Pending |
