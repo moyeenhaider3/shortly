@@ -52,7 +52,7 @@ Plans:
 **Requirements**: LIFE-01, LIFE-02, LIFE-03, LIFE-04, LIFE-05, PARITY-01, PARITY-02
 **Roadmap days**: Day 2 (pipes, guards, interceptors, filters), Day 8 (contract testing)
 **Success Criteria** (what must be TRUE):
-  1. `curl localhost:5001/nope` returns 404 `{success:false,message:"Cannot find GET /nope on this server",code:"NOT_FOUND"}`, identical to Express
+  1. `curl localhost:5001/api/nope` returns 404 `{success:false,message:"Cannot find GET /api/nope on this server",code:"NOT_FOUND"}`, identical to Express (a single-segment `GET /nope` is `URL_NOT_FOUND` on Express because the redirect route matches it; Nest matches that after Phase 5)
   2. Sending malformed JSON returns a 400 envelope; a deliberately thrown `Error` returns 500 `INTERNAL_SERVER_ERROR` with no stack trace in the body
   3. A demo DTO rejects bad input with the `code` and `message` the matching Express validator uses
   4. Each request prints `[timestamp] METHOD URL` in the Nest console
@@ -60,11 +60,11 @@ Plans:
 **Plans**: 5 plans
 
 Plans:
-- [ ] 02-01: `AppException` + global `@Catch()` exception filter producing `{success:false,message,code}`
-- [ ] 02-02: 404 shape, JSON parse errors, request logger middleware, CORS and `trust proxy` in `main.ts`
-- [ ] 02-03: Global `ValidationPipe` with an `exceptionFactory` mapping to Express codes; demo DTO
-- [ ] 02-04: `contract-tests/` project (Jest + supertest against `BASE_URL`), helpers, `/health` + 404 tests
-- [ ] 02-05: Full contract suite (auth, urls, redirect, analytics, users, error paths) green against Express
+- [ ] 02-01-PLAN.md: `AppException` + global `@Catch()` exception filter producing `{success:false,message,code}`
+- [ ] 02-02-PLAN.md: 404 shape, JSON parse errors, request logger middleware, CORS and `trust proxy` in `main.ts`
+- [ ] 02-03-PLAN.md: Global `ValidationPipe` with an `exceptionFactory` mapping to Express codes; demo DTO
+- [ ] 02-04-PLAN.md: `contract-tests/` project (Jest + supertest against `BASE_URL`), helpers, `/health` + 404 + malformed-JSON tests
+- [ ] 02-05-PLAN.md: Full contract suite (auth, urls, redirect, analytics, users, error paths) green against Express
 
 ### Phase 3: Data Layer with Prisma
 **Goal**: The relational model for users, links and visits exists in Postgres, is migrated and seeded, and is reachable from anywhere through an injectable `PrismaService`.
