@@ -1,0 +1,25 @@
+# backend-nest/docker-compose.yml
+# Dev database only. The Nest app itself runs natively (hybrid setup).
+name: shortly-nest            # keeps this stack separate from any other Compose project
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: shortly-nest-postgres
+    restart: unless-stopped
+    ports:
+      - "5433:5432"           # host:container. 5433 avoids clashing with a local Postgres on 5432
+    environment:
+      POSTGRES_DB: shortly_nest
+      POSTGRES_USER: shortly
+      POSTGRES_PASSWORD: shortly
+    volumes:
+      - shortly_nest_pgdata:/var/lib/postgresql/data   # named volume: data survives restarts
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U shortly -d shortly_nest"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  shortly_nest_pgdata:

@@ -6,6 +6,7 @@ Shortly shortens links, lets you pick a custom alias, and counts every click. It
 |---|---|---|---|---|---|
 | **Backend** (API + redirects) | [`backend/`](backend/) | Node.js, TypeScript, Express 5, MongoDB (Mongoose), JWT | `http://localhost:5000` | [Render](https://shortly-dgxi.onrender.com) | [Backend README](backend/README.md) |
 | **Frontend** (dashboard app) | [`frontend/`](frontend/) | Flutter (web first; mobile and desktop also build), BLoC, Dio, go_router | `http://localhost:8080` | [GitHub Pages](https://moyeenhaider3.github.io/shortly/) | [Frontend README](frontend/README.md) |
+| **Roadmap** (NestJS Migration) | [`roadmap/`](roadmap/) | 10-Day NestJS Backend Engineering Curriculum | — | — | [Roadmap Tracker](roadmap/README.md) |
 
 This file explains how the two parts fit together. Setup, structure and API details for each part are in its own README. For how a push to `main` reaches production, see [Deployment](#deployment).
 
