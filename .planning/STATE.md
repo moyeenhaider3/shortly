@@ -28,7 +28,7 @@ See: .planning/PROJECT.md (updated 2026-10-15)
 
 Phase: 2 of 9 (Request Lifecycle & Contract Baseline)
 Plan: 1 of 5 in current phase (02-01 complete)
-Step: 02-02 next (404 + JSON parse errors, logger middleware, CORS, trust proxy)
+Step: 02-02 built, pending removal of TEMP log line; then 02-03 (validation). 02-04/02-05 deferred to the end
 Status: In progress
 Last activity: 2026-10-16 -- 02-01 reviewed and verified
 
@@ -90,7 +90,7 @@ Recent decisions affecting current work:
 
 | Category | Item | Status | Deferred At |
 |----------|------|--------|-------------|
-| *(none)* | | | |
+| Testing | 02-04 and 02-05 (`contract-tests/` suite) postponed until all feature topics are covered; run last (developer request, Nest-only focus) | Deferred | 2026-10-16 |
 
 ## Session Continuity
 
