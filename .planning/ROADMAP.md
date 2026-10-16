@@ -104,7 +104,7 @@ Plans:
 
 **Wave 1**
 
-- [ ] 03-01-PLAN.md: Install Prisma (pinned 7.10.1), write `schema.prisma` (User / Url / Visit / Role) + `prisma.config.ts`, first migration, generate client, Prisma Studio tour
+- [x] 03-01-PLAN.md: Install Prisma (pinned 7.10.1), write `schema.prisma` (User / Url / Visit / Role) + `prisma.config.ts`, first migration, generate client, Prisma Studio tour
 
 **Wave 2** *(blocked on Wave 1 completion; 03-02 and 03-03 are independent of each other)*
 
