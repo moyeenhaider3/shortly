@@ -27,10 +27,10 @@ See: .planning/PROJECT.md (updated 2026-10-15)
 ## Current Position
 
 Phase: 3 of 9 (Data Layer with Prisma)
-Plan: 1 of 4 in current phase (03-01 complete)
-Step: next is 03-02 (global PrismaModule + PrismaService); 03-03 can be done in either order
+Plan: 2 of 4 in current phase (03-01, 03-02 complete)
+Step: next is 03-03 (idempotent seed); 03-04 (transactional recordVisit) after it
 Status: In progress
-Last activity: 2026-10-16 -- 03-01 reviewed and verified
+Last activity: 2026-10-16 -- 03-02 reviewed and verified
 
 Progress: [█░░░░░░░░░] 11%
 
@@ -76,6 +76,7 @@ Recent decisions affecting current work:
 - 02-02: Filter branches by error kind (404, body-parser); Nest wraps parser errors as BadRequestException (type lost), so `bodyParser:false` + own `json()` + error middleware converts to AppException; `NestMiddleware` + `MiddlewareConsumer.forRoutes('*path')`; `NestExpressApplication` for `app.set`; `enableCors`; `@Req()`
 - 02-03: Pipes; `ValidationPipe` options (`transform`, `whitelist`, `exceptionFactory`); DTO classes; class-validator decorators with `context` {code, rank}; class-transformer `@Transform`; lowest-rank-wins to mimic first-failure; mass-assignment stripping
 - 03-01: Prisma schema language (models, enum, `@id @default(uuid()) @db.Uuid`, `@unique`, nullable unique, `@@index`, relations with `onDelete: Cascade`); relational vs embedded modelling (Visit as a table); unique implies index; Prisma 7 layout (`prisma.config.ts`, `prisma-client` generator with required `output`, generate separate from migrate); `migrate dev`, shadow DB, `migration.sql`, `_prisma_migrations`; npm dist-tags and version pinning
+- 03-02: Provider wrapping a third-party client (`extends PrismaClient`); Prisma 7 driver adapter (`@prisma/adapter-pg`); `OnModuleInit`/`OnModuleDestroy`; `enableShutdownHooks()` and signals (SIGINT/SIGTERM); `@Global()` modules + `exports`; constructor injection across modules without imports; raw queries via tagged template (never `*Unsafe` with user input)
 
 ### Pending Todos
 

@@ -108,7 +108,7 @@ Plans:
 
 **Wave 2** *(blocked on Wave 1 completion; 03-02 and 03-03 are independent of each other)*
 
-- [ ] 03-02-PLAN.md: Global `PrismaModule` + `PrismaService` (driver adapter) with lifecycle hooks and `enableShutdownHooks`
+- [x] 03-02-PLAN.md: Global `PrismaModule` + `PrismaService` (driver adapter) with lifecycle hooks and `enableShutdownHooks`
 - [ ] 03-03-PLAN.md: Idempotent seed script (ADMIN + NORMAL users, bcrypt, env-based passwords)
 
 **Wave 3** *(blocked on Wave 2 completion)*
