@@ -102,10 +102,18 @@ Plans:
 
 Plans:
 
-- [ ] 03-01: Install Prisma, write `schema.prisma` (User / Url / Visit / Role), first migration, Prisma Studio tour
-- [ ] 03-02: Global `PrismaModule` + `PrismaService` with lifecycle hooks
-- [ ] 03-03: Idempotent seed script (ADMIN + NORMAL users)
-- [ ] 03-04: Transactional `recordVisit` (increment + insert) with a rollback experiment
+**Wave 1**
+
+- [ ] 03-01-PLAN.md: Install Prisma (pinned 7.10.1), write `schema.prisma` (User / Url / Visit / Role) + `prisma.config.ts`, first migration, generate client, Prisma Studio tour
+
+**Wave 2** *(blocked on Wave 1 completion; 03-02 and 03-03 are independent of each other)*
+
+- [ ] 03-02-PLAN.md: Global `PrismaModule` + `PrismaService` (driver adapter) with lifecycle hooks and `enableShutdownHooks`
+- [ ] 03-03-PLAN.md: Idempotent seed script (ADMIN + NORMAL users, bcrypt, env-based passwords)
+
+**Wave 3** *(blocked on Wave 2 completion)*
+
+- [ ] 03-04-PLAN.md: Transactional `recordVisit` (increment + insert) with a rollback experiment
 
 ### Phase 4: Authentication & Authorization
 
