@@ -27,10 +27,10 @@ See: .planning/PROJECT.md (updated 2026-10-15)
 ## Current Position
 
 Phase: 2 of 9 (Request Lifecycle & Contract Baseline)
-Plan: 0 of 5 in current phase
-Step: Phase 1 complete; Phase 2 not yet planned
-Status: Ready to execute
-Last activity: 2026-10-15 -- Phase 2 planning complete
+Plan: 1 of 5 in current phase (02-01 complete)
+Step: 02-02 next (404 + JSON parse errors, logger middleware, CORS, trust proxy)
+Status: In progress
+Last activity: 2026-10-16 -- 02-01 reviewed and verified
 
 Progress: [█░░░░░░░░░] 11%
 
@@ -38,7 +38,7 @@ Progress: [█░░░░░░░░░] 11%
 
 **Velocity:**
 
-- Total plans completed: 4
+- Total plans completed: 5
 - Average duration: -
 - Total execution time: -
 
@@ -71,9 +71,11 @@ Recent decisions affecting current work:
 - 01-02: Docker Compose (service, port mapping host:container, named volume, healthcheck); DATABASE_URL anatomy; .env vs .env.example
 - 01-03: Dynamic modules (`ConfigModule.forRoot`), `isGlobal`, Joi schema, fail-fast boot, `ConfigService` via `app.get()`; env vars are strings until validated
 - 01-04: Feature modules, `nest g` schematics (auto-wire imports/controllers), `@Controller`/`@Get`, returned objects become JSON; Nest runs on Express underneath (`X-Powered-By: Express`)
+- 02-01: Exceptions layer; `HttpException`; `AppException` (parameter-property shorthand); `@Catch()` filter + `ArgumentsHost`; `APP_FILTER` (DI-aware global registration); `else if` order because AppException is an HttpException; a controller belongs to one module only
 
 ### Pending Todos
 
+- Delete `backend-nest/src/demo/` (DemoModule/DemoController, TEMPORARY) once real endpoints cover the error lifecycle (target: Phase 4); remove `DemoModule` from `app.module.ts` too
 - Remove unused `HealthController` import from `backend-nest/src/app.module.ts` (oxlint warning)
 - Remove stale TODO(01-03) comment in `backend-nest/src/main.ts`
 - Commit `backend-nest/` (developer staging it)
