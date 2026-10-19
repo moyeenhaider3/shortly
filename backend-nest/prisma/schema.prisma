@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client" // Prisma 7 generator (NOT "prisma-client-js")
+  output   = "../src/generated/prisma" // required: client is generated as TS source inside src/
+}
+
+datasource db {
+  provider = "postgresql" // no url here; that is a Prisma 7 error
+}
+
+enum Role {
+  NORMAL
+  ADMIN
+}
+
+model User {
+  id           String   @id @default(uuid()) @db.Uuid
+  email        String   @unique
+  name         String
+  passwordHash String
+  role         Role     @default(NORMAL)
+  urls         Url[] // relation field only, no column
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Url {
+  id          String   @id @default(uuid()) @db.Uuid
+  originalUrl String
+  shortCode   String   @unique
+  customAlias String?  @unique // nullable + unique: Postgres allows many NULLs (Mongo needed sparse)
+  userId      String   @db.Uuid // FK column (Mongoose: createdBy)
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  clickCount  Int      @default(0)
+  isActive    Boolean  @default(true)
+  visits      Visit[] // was an embedded array in Mongoose; now a table
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([userId])
+}
+
+model Visit {
+  id        String   @id @default(uuid()) @db.Uuid
+  urlId     String   @db.Uuid
+  url       Url      @relation(fields: [urlId], references: [id], onDelete: Cascade)
+  ip        String?
+  userAgent String?
+  visitedAt DateTime @default(now())
+
+  @@index([urlId])
+  @@index([visitedAt])
+}
